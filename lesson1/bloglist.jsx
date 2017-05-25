@@ -5,7 +5,7 @@ const BlogList = ({posts}) => (
     null,
     _.map(
       posts,
-      (post, key) => (
+      (post) => (
         React.createElement(
           BlogItem,
           {key: post.id.toString()},
