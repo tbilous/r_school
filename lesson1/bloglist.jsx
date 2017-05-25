@@ -1,28 +1,27 @@
-const posts = [
-  {
-    image: {src: 'http://fakeimg.pl/300/ff0000/'},
-    text: 'Bla'
-  },
-  {
-    image: {src: 'http://fakeimg.pl/300/FFFF00/'},
-    text: 'Bla'
-  }
-];
+const style =  {width: 200, height: 100, alt: 'img'};
 
-class BlogList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {posts}
-  }
-
-  render() {
-    const {posts} = this.state;
-    return React.createElement(BlogItem, {posts});
-  }
-}
-
-ReactDOM.render(
-  React.createElement(BlogList),
-  document.getElementById('app')
+const BlogList = ({posts}) => (
+  DOM.div(
+    null,
+    _.map(
+      posts,
+      (post, key) => (
+        React.createElement(
+          BlogItem,
+          {key: post.id.toString()},
+          DOM.li(null, React.createElement(TextBox, {text: post.text})),
+          DOM.li(null,
+            React.createElement(Image,
+              {
+                image: post.image.src,
+                width: style.width,
+                height: style.height,
+                alt: style.alt
+              }
+            )
+          )
+        )
+      )
+    )
+  )
 );

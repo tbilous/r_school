@@ -1,16 +1,13 @@
-const BlogItem = ({posts}) => (
-  DOM.div(
-    null,
-    _.map(
-      posts,
-      (post, key) => (
-        React.createElement(
-          Segment,
-          {key},
-          DOM.li(null, React.createElement(TextBox, {post})),
-          DOM.li(null, React.createElement(Image, {post}))
-        )
-      )
-    )
+const BlogItem = (props) => (
+  DOM.ul(
+    {
+      style: {
+        listStyle: 'none',
+        border: '1px solid red',
+        padding: '5px',
+        textAlign: 'center'
+      }
+    }
+    , props.children
   )
 );
