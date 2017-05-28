@@ -8,5 +8,3 @@ const result = ReactDOMServer.renderToString(
 );
 
 console.log(result);
-
-export default result;

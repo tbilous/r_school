@@ -25,10 +25,9 @@ class BlogItem extends React.Component {
         DOM.li(null, React.createElement(Signature, assign({}, post.signature))),
         DOM.li(null, React.createElement(Liking, {likes: post.likes}))
       )
-
     )
   }
-};
+}
 
 BlogItem.propTypes = {
   post: PropTypes.shape({

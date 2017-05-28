@@ -25,7 +25,6 @@ class Liking extends React.Component {
   }
 }
 
-
 Liking.propTypes = {
   likes: PropTypes.number.isRequired
 };
