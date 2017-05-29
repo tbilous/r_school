@@ -6,7 +6,7 @@ class Liking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      likes: this.props.likes || 0
+      likes: this.props.likes || Liking.defaultProps.likes
     };
     this.incrementLikes = this.incrementLikes.bind(this)
   }
@@ -24,6 +24,10 @@ class Liking extends React.Component {
     );
   }
 }
+
+Liking.defaultProps = {
+  likes: 99
+};
 
 Liking.propTypes = {
   likes: PropTypes.number.isRequired
