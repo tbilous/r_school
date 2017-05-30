@@ -1,4 +1,4 @@
-import React, {DOM} from 'react';
+import React, { DOM } from 'react';
 import PropTypes from 'prop-types';
 
 import Image from '../ui/Image';
@@ -20,8 +20,8 @@ class BlogItem extends React.Component {
         }
         ,
         DOM.li(null, React.createElement(TextBox, {}, post.text)),
-        DOM.li(null, React.createElement(Image, {image: post.image})),
-        DOM.li(null, React.createElement(Signature, {signature: post.signature})),
+        DOM.li(null, React.createElement(Image, post.image)),
+        DOM.li(null, React.createElement(Signature, post.signature)),
         DOM.li(null, React.createElement(Liking, {likes: post.likes}))
       )
     )
