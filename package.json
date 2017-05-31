@@ -1,0 +1,33 @@
+{
+  "name": "r_school",
+  "version": "1.0.0",
+  "description": "'Learn React'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbilous/r_school.git"
+  },
+  "author": "T.Bilous",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tbilous/r_school/issues"
+  },
+  "homepage": "https://github.com/tbilous/r_school#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.24.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "express": "^4.15.3"
+  }
+}
