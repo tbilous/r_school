@@ -1,8 +1,10 @@
-import React, { DOM } from 'react';
-import _ from 'lodash';
+import React, { Component } from 'react';
 import moment from 'moment';
+import update from 'immutability-helper';
 
-import BlogItem from '../ui/BlogItem';
+
+import BlogList from '../ui/BlogList';
+
 
 const img_attr = {width: 200, height: 100, alt: 'img'};
 
@@ -45,19 +47,31 @@ const posts = [
   }
 ];
 
-export default class BlogList extends React.Component {
+export default class BlogPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts
+    };
+    this.incrementLikes = this.like.bind(this)
+  }
+
+  like(post_id) {
+    const index = posts.findIndex((i) => i.id === post_id );
+    const newState = update(this.state, {
+      posts: {
+        [index]: {
+          likes: { $apply: (x) => x + 1 }
+        }
+      }
+    });
+    this.setState(newState);
+  }
+
   render() {
-    return DOM.div(
-      null,
-      _.map(
-        posts,
-        (post) => (
-          React.createElement(
-            BlogItem,
-            {key: post.id.toString(), post}
-          )
-        )
-      )
-    )
+    return React.createElement(BlogList, {
+      posts: this.state.posts,
+      incrementLikes: this.incrementLikes
+    });
   }
 }
