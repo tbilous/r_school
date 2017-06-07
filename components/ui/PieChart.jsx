@@ -1,7 +1,7 @@
-import React, { DOM, Component } from 'react';;
+import React, { DOM, Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class Chart extends Component {
+export default class PieChart extends Component {
   componentDidMount() {
     this.chart = c3.generate({
       bindto: this.refs.chart,

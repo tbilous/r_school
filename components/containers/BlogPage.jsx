@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 
 import BlogList from '../ui/BlogList';
-import Chart from '../ui/Chart';
+import PieChart from '../ui/PieChart';
 
 
 const img_attr = {width: 200, height: 100, alt: 'img'};
@@ -80,7 +80,7 @@ export class BlogPage extends Component {
           })
         ),
         DOM.div(null,
-          React.createElement(Chart, {
+          React.createElement(PieChart, {
             columns: _.map(this.state.posts, (post) => ([post.text, post.likes]))
           })
         )
