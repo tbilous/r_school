@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { DOM, Component } from 'react';
 import moment from 'moment';
 import update from 'immutability-helper';
+import _ from 'lodash';
 
 
 import BlogList from '../ui/BlogList';
+import Chart from '../ui/Chart';
 
 
 const img_attr = {width: 200, height: 100, alt: 'img'};
@@ -47,7 +49,7 @@ const posts = [
   }
 ];
 
-export default class BlogPage extends Component {
+export class BlogPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,11 +59,11 @@ export default class BlogPage extends Component {
   }
 
   like(post_id) {
-    const index = posts.findIndex((i) => i.id === post_id );
-    const newState = update(this.state, {
+    const arr = posts.findIndex((i) => i.id === post_id);
+    const newState = update(posts, {
       posts: {
-        [index]: {
-          likes: { $apply: (x) => x + 1 }
+        [arr]: {
+          likes: {$apply: (x) => x + 1}
         }
       }
     });
@@ -69,9 +71,20 @@ export default class BlogPage extends Component {
   }
 
   render() {
-    return React.createElement(BlogList, {
-      posts: this.state.posts,
-      incrementLikes: this.incrementLikes
-    });
+    return (
+      DOM.div(null,
+        DOM.div(null,
+          React.createElement(BlogList, {
+            posts: this.state.posts,
+            incrementLikes: this.incrementLikes
+          })
+        ),
+        DOM.div(null,
+          React.createElement(Chart, {
+            columns: _.map(this.state.posts, (post) => ([post.text, post.likes]))
+          })
+        )
+      )
+    )
   }
 }
