@@ -1,6 +1,6 @@
 import React, { DOM, Component } from 'react';
 import moment from 'moment';
-import update from 'immutability-helper';
+import Immutable from 'immutable';
 import { map } from 'lodash/collection';
 
 
@@ -49,7 +49,7 @@ const posts = [
   }
 ];
 
-export class BlogPage extends Component {
+export default class BlogPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,16 +58,15 @@ export class BlogPage extends Component {
     this.incrementLikes = this.like.bind(this)
   }
 
-  like(postId) {
-    const arr = posts.findIndex((i) => i.id === postId);
-    const newState = update(posts, {
-      posts: {
-        [arr]: {
-          likes: {$apply: (x) => x + 1}
-        }
-      }
-    });
-    this.setState(newState);
+  like(post_id) {
+    const arr = posts.findIndex((i) => i.id === post_id);
+    const origPost = Immutable.fromJS(posts);
+
+    this.setState({
+      posts: origPost
+        .setIn([ arr, 'likes'], this.state.posts[arr].likes + 1)
+        .toJS()
+    })
   }
 
   render() {
@@ -78,8 +77,8 @@ export class BlogPage extends Component {
             posts: this.state.posts,
             incrementLikes: this.incrementLikes
           })
-        )
-        , DOM.div(null,
+        ),
+        DOM.div(null,
           React.createElement(PieChart, {
             columns: map(this.state.posts, (post) => ([post.text, post.likes]))
           })
