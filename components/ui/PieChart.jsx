@@ -1,6 +1,7 @@
 import React, { DOM, Component } from 'react';
 import PropTypes from 'prop-types';
 
+
 export default class PieChart extends Component {
   componentDidMount() {
     this.chart = c3.generate({
@@ -29,6 +30,6 @@ export default class PieChart extends Component {
   }
 }
 
-Chart.propTypes = {
+PieChart.propTypes = {
   columns: PropTypes.array
 };

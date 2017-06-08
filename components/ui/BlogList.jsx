@@ -1,5 +1,5 @@
 import React, { DOM, Component } from 'react';
-import _ from 'lodash';
+import { map } from 'lodash/collection';
 
 import BlogItem from '../ui/BlogItem';
 
@@ -8,7 +8,7 @@ export default class BlogList extends Component {
     const {posts, incrementLikes} = this.props;
     return DOM.div(
       null,
-      _.map(
+      map(
         posts,
         (post) => (
           React.createElement(

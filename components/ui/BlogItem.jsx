@@ -33,18 +33,8 @@ BlogItem.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.number,
     text: PropTypes.string,
-    image: PropTypes.shape({
-      src: PropTypes.string.isRequired,
-      attr: PropTypes.shape({
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-        alt: PropTypes.string.isRequired,
-      })
-    }),
-    signature: PropTypes.shape({
-      author: PropTypes.string.isRequired,
-      created_at: PropTypes.string.isRequired,
-      updated_at: PropTypes.string.isRequired
-    }),
+    signature: Signature.propTypes.signature,
+    likes: PropTypes.number,
+    image: Image.propTypes.image
   })
 };

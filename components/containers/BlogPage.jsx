@@ -1,14 +1,14 @@
 import React, { DOM, Component } from 'react';
 import moment from 'moment';
 import update from 'immutability-helper';
-import _ from 'lodash';
+import { map } from 'lodash/collection';
 
 
 import BlogList from '../ui/BlogList';
 import PieChart from '../ui/PieChart';
 
 
-const img_attr = {width: 200, height: 100, alt: 'img'};
+const imgAttr = {width: 200, height: 100, alt: 'img'};
 
 const posts = [
   {
@@ -16,9 +16,9 @@ const posts = [
     image: {
       src: 'http://fakeimg.pl/300/ff0000/',
       attr: {
-        width: img_attr.width,
-        height: img_attr.height,
-        alt: img_attr.alt
+        width: imgAttr.width,
+        height: imgAttr.height,
+        alt: imgAttr.alt
       }
     },
     text: 'Bla',
@@ -34,9 +34,9 @@ const posts = [
     image: {
       src: 'http://fakeimg.pl/300/FFFF00/',
       attr: {
-        width: img_attr.width,
-        height: img_attr.height,
-        alt: img_attr.alt
+        width: imgAttr.width,
+        height: imgAttr.height,
+        alt: imgAttr.alt
       }
     },
     text: 'Bla',
@@ -58,8 +58,8 @@ export class BlogPage extends Component {
     this.incrementLikes = this.like.bind(this)
   }
 
-  like(post_id) {
-    const arr = posts.findIndex((i) => i.id === post_id);
+  like(postId) {
+    const arr = posts.findIndex((i) => i.id === postId);
     const newState = update(posts, {
       posts: {
         [arr]: {
@@ -78,10 +78,10 @@ export class BlogPage extends Component {
             posts: this.state.posts,
             incrementLikes: this.incrementLikes
           })
-        ),
-        DOM.div(null,
+        )
+        , DOM.div(null,
           React.createElement(PieChart, {
-            columns: _.map(this.state.posts, (post) => ([post.text, post.likes]))
+            columns: map(this.state.posts, (post) => ([post.text, post.likes]))
           })
         )
       )
