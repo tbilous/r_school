@@ -59,28 +59,30 @@ export default class BlogPage extends Component {
   }
 
   like(post_id) {
+    const posts = this.state.posts;
     const arr = posts.findIndex((i) => i.id === post_id);
     const origPost = Immutable.fromJS(posts);
 
     this.setState({
       posts: origPost
-        .setIn([ arr, 'likes'], this.state.posts[arr].likes + 1)
+        .setIn([ arr, 'likes'], posts[arr].likes + 1)
         .toJS()
     })
   }
 
   render() {
+    const posts = this.state.posts;
     return (
       DOM.div(null,
         DOM.div(null,
           React.createElement(BlogList, {
-            posts: this.state.posts,
+            posts: posts,
             incrementLikes: this.incrementLikes
           })
         ),
         DOM.div(null,
           React.createElement(PieChart, {
-            columns: map(this.state.posts, (post) => ([post.text, post.likes]))
+            columns: map(posts, (post) => ([post.text, post.likes]))
           })
         )
       )
