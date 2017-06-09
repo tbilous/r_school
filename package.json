@@ -18,6 +18,9 @@
   "homepage": "https://github.com/tbilous/r_school#readme",
   "dependencies": {
     "babel-preset-react": "^6.24.1",
+    "c3": "^0.4.12",
+    "d3": "^4.9.1",
+    "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",

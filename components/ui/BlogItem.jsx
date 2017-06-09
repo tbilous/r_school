@@ -1,4 +1,4 @@
-import React, { DOM } from 'react';
+import React, { DOM, Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Image from '../ui/Image';
@@ -6,9 +6,9 @@ import TextBox from '../ui/TextBox';
 import Signature from '../ui/Signature';
 import Liking from '../ui/Liking';
 
-class BlogItem extends React.Component {
+export default class BlogItem extends Component {
   render() {
-    const {post} = this.props;
+    const {post, incrementLikes} = this.props;
     return (  DOM.ul(
         {
           style: {
@@ -22,12 +22,13 @@ class BlogItem extends React.Component {
         DOM.li(null, React.createElement(TextBox, {}, post.text)),
         DOM.li(null, React.createElement(Image, post.image)),
         DOM.li(null, React.createElement(Signature, post.signature)),
-        DOM.li(null, React.createElement(Liking, {likes: post.likes}))
+        DOM.li(null, React.createElement(Liking, {
+          likes: post.likes, incrementLikes: incrementLikes, id: post.id
+        }))
       )
     )
   }
 }
-
 BlogItem.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.number,
@@ -37,5 +38,3 @@ BlogItem.propTypes = {
     image: Image.propTypes.image
   })
 };
-
-export default BlogItem
