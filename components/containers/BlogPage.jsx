@@ -54,9 +54,9 @@ export default class BlogPage extends Component {
     this.incrementLikes = this.like.bind(this)
   }
 
-  like(post_id) {
+  like(postId) {
     const posts = this.state.posts;
-    const arr = posts.findIndex((i) => i.id === post_id);
+    const arr = posts.findIndex((i) => i.id === postId);
     const origPost = Immutable.fromJS(posts);
 
     this.setState({
