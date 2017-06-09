@@ -15,17 +15,15 @@ const posts = [
     id: 1,
     image: {
       src: 'http://fakeimg.pl/300/ff0000/',
-      attr: {
-        width: imgAttr.width,
-        height: imgAttr.height,
-        alt: imgAttr.alt
-      }
+      width: imgAttr.width,
+      height: imgAttr.height,
+      alt: imgAttr.alt
     },
     text: 'Bla',
     signature: {
       author: 'John Doe',
-      created_at: moment().startOf('day').fromNow(),
-      updated_at: moment().startOf('day').fromNow()
+      createdAt: moment().startOf('day').fromNow(),
+      updatedAt: moment().startOf('day').fromNow()
     },
     likes: 20,
   },
@@ -33,17 +31,15 @@ const posts = [
     id: 2,
     image: {
       src: 'http://fakeimg.pl/300/FFFF00/',
-      attr: {
-        width: imgAttr.width,
-        height: imgAttr.height,
-        alt: imgAttr.alt
-      }
+      width: imgAttr.width,
+      height: imgAttr.height,
+      alt: imgAttr.alt
     },
     text: 'Bla',
     signature: {
       author: 'John Doe',
-      created_at: moment().startOf('day').fromNow(),
-      updated_at: moment().startOf('day').fromNow()
+      createdAt: moment().startOf('day').fromNow(),
+      updatedAt: moment().startOf('day').fromNow()
     },
     likes: 10,
   }

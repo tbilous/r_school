@@ -8,8 +8,8 @@ class Signature extends React.Component {
     return ( DOM.ul(
         null,
         DOM.li(null, `author: ${author || Signature.defaultProps.author}`),
-        DOM.li(null, `created: ${created_at || Signature.defaultProps.created_at}`),
-        DOM.li(null, `updated: ${updated_at || Signature.defaultProps.updated_at}`),
+        DOM.li(null, `created: ${created_at || Signature.defaultProps.createdAt}`),
+        DOM.li(null, `updated: ${updated_at || Signature.defaultProps.updatedAt}`),
       )
     )
   }
@@ -17,13 +17,13 @@ class Signature extends React.Component {
 
 Signature.defaultProps = {
   author: 'John Doe Jn.',
-  created_at: moment().startOf('day').fromNow(),
-  updated_at: moment().startOf('day').fromNow()
+  createdAt: moment().startOf('day').fromNow(),
+  updatedAt: moment().startOf('day').fromNow()
 };
 
 Signature.propTypes = {
   author: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
-  updated_at: PropTypes.string.isRequired
+  createdAt: PropTypes.string.isRequired,
+  updatedAt: PropTypes.string.isRequired
 };
 export default Signature
