@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Liking = ({likes, incrementLikes, id}) => (
-  <span>
+  <div className="text-center">
     <span>{likes}</span>
-    <button onClick={(e) => incrementLikes(id)}>+</button>
-  </span>
+    <button onClick={() => incrementLikes(id)}>+</button>
+  </div>
 );
 
 Liking.defaultProps = {
@@ -16,4 +16,4 @@ Liking.propTypes = {
   likes: PropTypes.number.isRequired
 };
 
-export default Liking
+export default Liking;
