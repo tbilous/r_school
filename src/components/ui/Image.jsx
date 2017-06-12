@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Col } from 'react-materialize';
 
 const Image = (props) => (
-  <img className="list-unstyled"
-    src={props.src}
-    width={props.width}
-    height={props.height}
-    alt={props.alt}
-  />
+  <Col m={3} s={5}>
+    <img className="responsive-img"
+      src={props.src}
+      // width={props.width}
+      // height={props.height}
+      alt={props.alt}
+    />
+  </Col>
 );
 
 Image.defaultProps = {

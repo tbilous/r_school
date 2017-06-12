@@ -29,7 +29,7 @@ export default class BlogPage extends Component {
 
   render() {
     const posts = this.state.posts;
-    return (DOM.div(null,
+    return (DOM.div({className: 'container'},
         <BlogList posts={posts} incrementLikes={this.incrementLikes}/>,
         <PieChart columns={ map(posts, (post) => ([post.text, post.likes]))}/>
       )

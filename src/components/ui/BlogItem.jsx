@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {  Card, Row, Col } from 'react-materialize';
 
 import Image from './Image';
 import TextBox from './TextBox';
@@ -7,15 +8,19 @@ import Signature from './Signature';
 import Liking from './Liking';
 
 const BlogItem = ({post, incrementLikes}) => (
-  <div>
-    <Image image={post.image} />
-    <TextBox>{post.text}</TextBox>
-    <Signature signature={post.signature} />
-    <Liking
-      likes={post.likes}
-      incrementLikes={incrementLikes}
-      id={post.id} />
-  </div>
+  <Card>
+    <Row className='card-content'>
+      <Image image={post.image} />
+      <TextBox>{post.text}</TextBox>
+    </Row>
+    <Row className='card-action'>
+      <Liking
+        likes={post.likes}
+        incrementLikes={incrementLikes}
+        id={post.id} />
+      <Signature signature={post.signature} />
+    </Row>
+  </Card>
 );
 
 BlogItem.propTypes = {

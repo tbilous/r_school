@@ -19,6 +19,23 @@ module.exports = {
         test: /\.(js|jsx)?$/,
         use: [ 'babel-loader' ],
         exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: [path.join(__dirname, 'dist/stylesheets/utils')]
+            }
+          }
+        ]
       }
     ]
   },

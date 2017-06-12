@@ -1,6 +1,5 @@
 import React from 'react';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+require('./stylesheets/main.scss');
 import BlogPage from './components/containers/BlogPage';
 
 const App = () => (
