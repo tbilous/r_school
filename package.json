@@ -37,6 +37,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-destructuring": "^2.1.0",
     "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-react": "^7.0.1",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
     "node-sass": "^4.5.3",
