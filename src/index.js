@@ -11,15 +11,22 @@ const render = (Component) => {
     <AppContainer>
       <Component />
     </AppContainer>,
-    rootElement,
-  )
+    rootElement
+  );
 };
 
 render(App);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    render(App);
-  });
+  // module.hot.accept('./App', () => {
+  //   render(App);
+  // });
+  const NextApp = require('./App').default;
+  ReactDOM.render(
+    <AppContainer>
+      <NextApp />
+    </AppContainer>,
+    rootElement
+  );
 }

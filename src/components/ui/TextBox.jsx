@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col } from 'react-materialize';
 
 const TextBox = ({children}) => (
-  <Col m={9} s={7}>
-    <span> { children } </span>
-  </Col>
+  <span> { children } </span>
 );
 
 TextBox.defaultProps = {

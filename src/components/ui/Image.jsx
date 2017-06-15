@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col } from 'react-materialize';
 
 const Image = (props) => (
-  <Col m={3} s={5}>
-    <img className="responsive-img"
-      src={props.src}
-      // width={props.width}
-      // height={props.height}
-      alt={props.alt}
-    />
-  </Col>
+  <img className="responsive-img"
+       src={props.src}
+       alt={props.alt}
+  />
 );
 
 Image.defaultProps = {
@@ -19,8 +14,6 @@ Image.defaultProps = {
 
 Image.propTypes = {
   src: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
   alt: PropTypes.string.isRequired,
 };
 

@@ -50,7 +50,7 @@ module.exports = {
       "import/max-dependencies": ["warn", {"max": 10}],
     "import/no-unresolved": 'off',
     "keyword-spacing": 1,
-    "max-len": ["error", 80, 2],
+    "max-len": ["error", 150, 2],
     "newline-per-chained-call": 1,
     "no-negated-condition": 1,
     "no-multiple-empty-lines": ["error", {"max": 2, "maxEOF": 1, "maxBOF": 0}],

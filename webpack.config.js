@@ -30,7 +30,7 @@ module.exports = {
             loader: 'css-loader',
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               includePaths: [path.join(__dirname, 'dist/stylesheets/utils')]
             }

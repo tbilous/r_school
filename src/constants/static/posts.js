@@ -1,12 +1,10 @@
-const imgAttr = {width: 200, height: 100, alt: 'img'};
+const imgAttr = { alt: 'img'};
 
 const posts = [
   {
     id: 1,
     image: {
       src: 'http://fakeimg.pl/300/ff0000/',
-      width: imgAttr.width,
-      height: imgAttr.height,
       alt: imgAttr.alt
     },
     text: 'Bla',
@@ -21,8 +19,6 @@ const posts = [
     id: 2,
     image: {
       src: 'http://fakeimg.pl/300/FFFF00/',
-      width: imgAttr.width,
-      height: imgAttr.height,
       alt: imgAttr.alt
     },
     text: 'Bla1',

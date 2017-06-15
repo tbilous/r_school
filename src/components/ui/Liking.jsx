@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Chip, Col, Icon } from 'react-materialize';
+import {Button, Chip} from 'react-materialize';
 
 const Liking = ({likes, incrementLikes, id}) => (
-  <Col s={12} m={3}>
+  <div>
     <Chip className='teal'>{likes}</Chip>
     <Button waves="light" icon="star" floating onClick={() => incrementLikes(id)}/>
-  </Col>
+  </div>
 );
 
 Liking.defaultProps = {
@@ -14,7 +14,9 @@ Liking.defaultProps = {
 };
 
 Liking.propTypes = {
-  likes: PropTypes.number.isRequired
+  likes: PropTypes.number.isRequired,
+  incrementLikes: PropTypes.func,
+  id: PropTypes.number.isRequired
 };
 
 export default Liking;
