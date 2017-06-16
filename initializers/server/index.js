@@ -9,7 +9,7 @@ const port = 3001;
 
 new webpackDevServer(webpack(config), {
   contentBase: './dist',
-  // hot: true,
+  hot: true,
   publicPath: config.output.publicPath,
   stats: {
     colors: true
