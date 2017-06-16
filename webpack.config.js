@@ -1,10 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const hostConfig = require(path.join(__dirname, 'initializers') + '/settings');
 
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://10.0.2.15:3001/',
+    `webpack-dev-server/client?http://${hostConfig.host}:${hostConfig.port}/`,
     'webpack/hot/only-dev-server',
     './src/index.js'
   ],

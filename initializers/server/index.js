@@ -3,13 +3,14 @@ const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 
 const config = require('../../webpack.config.js');
+const hostConfig = require('../settings');
 
-const host = '10.0.2.15';
-const port = 3001;
+const host = hostConfig.host;
+const port = hostConfig.port;
 
 new webpackDevServer(webpack(config), {
   contentBase: './dist',
-  // hot: true,
+  hot: true,
   publicPath: config.output.publicPath,
   stats: {
     colors: true
