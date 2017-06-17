@@ -17,20 +17,35 @@
   },
   "homepage": "https://github.com/tbilous/r_school#readme",
   "dependencies": {
-    "babel-preset-react": "^6.24.1",
-    "c3": "^0.4.12",
-    "d3": "^4.9.1",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-materialize": "^1.0.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
     "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
-    "express": "^4.15.3"
+    "css-loader": "^0.28.4",
+    "eslint": "^3.19.0",
+    "eslint-plugin-destructuring": "^2.1.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-react": "^7.0.1",
+    "express": "^4.15.3",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "node-sass": "^4.5.3",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.6.1",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-hot-middleware": "^2.18.0"
   }
 }

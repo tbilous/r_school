@@ -1,0 +1,7 @@
+@import "./utils/spacing";
+.m {
+  &__card-footer {
+      padding-top: .5rem;
+      text-align: right;
+    }
+}
