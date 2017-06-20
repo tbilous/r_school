@@ -9,7 +9,7 @@ import Liking from './Liking';
 
 const BlogItem = ({post, incrementLikes}) => (
   <Card>
-    <Row className='card-content'>
+    <Row>
       <Col m={3} s={5}>
         <Image image={post.image}/>
       </Col>
