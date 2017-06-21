@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, Row, Col} from 'react-materialize';
+import {Link} from 'react-router-dom';
+
 
 import Image from './Image';
 import TextBox from './TextBox';
@@ -11,7 +13,9 @@ const BlogItem = ({post, incrementLikes}) => (
   <Card>
     <Row>
       <Col m={3} s={5}>
-        <Image image={post.image}/>
+        <Link to={`/posts/${post.id}`}>
+          <Image image={post.image}/>
+        </Link>
       </Col>
       <Col m={9} s={7}>
         <TextBox>{post.text}</TextBox>

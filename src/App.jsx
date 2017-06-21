@@ -5,6 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import BlogPage from 'components/containers/BlogPage';
 import MainLayout from 'components/layouts/MainLayout';
 import AboutPage from 'components/containers/AboutPage';
+import PostShow from 'components/containers/PostShow';
 
 const App = () => (
   <BrowserRouter>
@@ -15,6 +16,9 @@ const App = () => (
                   history={history}/>
       ) }/>
       <Route exact path="/about" component={ AboutPage }/>
+      <Route exact path="/posts/:id" render={({match}) => (
+        <PostShow id={match.params.id} />
+      )} />
     </MainLayout>
   </BrowserRouter>
 );
