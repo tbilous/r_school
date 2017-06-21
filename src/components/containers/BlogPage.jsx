@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import Immutable from 'immutable';
 import {map} from 'lodash/collection';
 
-import posts from '../../constants/static/posts';
+import request from 'superagent';
+
+const settings = require('../../../initializers/settings');
+
 import BlogList from '../ui/BlogList';
 import PieChart from '../ui/PieChart';
 import {Col, Row, Container} from 'react-materialize';
@@ -10,10 +13,20 @@ import {Col, Row, Container} from 'react-materialize';
 export default class BlogPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      posts
-    };
+    this.state = { posts: []};
     this.incrementLikes = this.like.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      settings.dataServer,
+      {},
+      (err, res) => this.setState({ posts: res.body })
+    );
   }
 
   like(postId) {

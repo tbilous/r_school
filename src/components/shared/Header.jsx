@@ -1,12 +1,17 @@
 import React from 'react';
-import {Navbar, NavItem, Row} from 'react-materialize';
+import {Navbar, Row} from 'react-materialize';
+import {NavLink} from 'react-router-dom';
 
 const Header = () => (
   <header>
     <Row>
       <Navbar brand='Thinknetica' right>
-        <NavItem href='get-started.html'>Getting started</NavItem>
-        <NavItem href='components.html'>Components</NavItem>
+        <li>
+          <NavLink exact to='/'>Home</NavLink>
+        </li>
+        <li>
+          <NavLink exact to='/about'>About</NavLink>
+        </li>
       </Navbar>
     </Row>
   </header>
