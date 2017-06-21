@@ -5,7 +5,7 @@ import {map} from 'lodash/collection';
 import posts from '../../constants/static/posts';
 import BlogList from '../ui/BlogList';
 import PieChart from '../ui/PieChart';
-import {Col, Row} from 'react-materialize';
+import {Col, Row, Container} from 'react-materialize';
 
 export default class BlogPage extends Component {
   constructor(props) {
@@ -31,14 +31,16 @@ export default class BlogPage extends Component {
   render() {
     const posts = this.state.posts;
     return (
-      <Row>
-        <Col s={12} m={9}>
-          <BlogList posts={posts} incrementLikes={this.incrementLikes}/>
-        </Col>
-        <Col s={12} m={3}>
-          <PieChart columns={ map(posts, (post) => ([post.text, post.likes]))}/>
-        </Col>
-      </Row>
+      <Container>
+        <Row>
+          <Col s={12} m={9}>
+            <BlogList posts={posts} incrementLikes={this.incrementLikes}/>
+          </Col>
+          <Col s={12} m={3}>
+            <PieChart columns={ map(posts, (post) => ([post.text, post.likes]))}/>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
