@@ -1,22 +1,20 @@
 import React, {Component} from 'react';
 import Immutable from 'immutable';
-import {map, size} from 'lodash/collection';
-import {ceil} from 'lodash';
-import ReactPaginate from 'react-paginate';
-
+import {map, bind, size, ceil} from 'lodash';
+import {Col, Row, Container} from 'react-materialize';
 import request from 'superagent';
-
-const settings = require('../../../initializers/settings');
-
 import BlogList from '../ui/BlogList';
 import PieChart from '../ui/PieChart';
-import {Col, Row, Container} from 'react-materialize';
-import PaginationMenu from '../widget/Pagination';
+import Pagination from '../widgets/Pagination';
+
+const settings = require('../../../initializers/settings');
 
 export default class BlogPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {posts: [], offset: 0};
+    this.state = {offset: 0};
+    this.handlePageClick = bind(this.handlePageClick, this);
+    this.fetchPosts = bind(this.fetchPosts, this);
     this.incrementLikes = this.like.bind(this);
   }
 
@@ -28,30 +26,25 @@ export default class BlogPage extends Component {
     request.get(
       settings.dataServer,
       {},
-      (err, res) => this.setState({posts: res.body, pageCount: Math.ceil(res.body.length / 10)})
+      (err, res) => this.parseResponse(res)
     );
   }
 
-  pageChangeHandler(page) {
-    this.setState({currentPageNumber: page});
-    this.fetchPosts(page);
-  }
-
-  handlePageClick(data) {
-    // () => this.setState({posts: [], offset: Math.ceil(data.selected * 10)});
-    // () => this.fetchPosts();
-    () => this.setState({offset: Math.ceil(data.selected * 10)}, () => {
-      this.fetchPosts();
+  parseResponse(response) {
+    const {posts, meta} = response.body;
+    this.setState({
+      posts: posts.slice(this.state.offset, (this.state.offset + meta.perPage)),
+      perPage: meta.perPage,
+      countPages: ceil(size(posts) / meta.perPage)
     });
   }
-  // handlePageClick = (data) => {
-  //   let selected = data.selected;
-  //   let offset = Math.ceil(selected * this.props.perPage);
-  //
-  //   this.setState({offset: offset}, () => {
-  //     this.loadCommentsFromServer();
-  //   });
-  // };
+
+  handlePageClick(page) {
+    this.setState({
+      offset: Math.ceil(page.selected * 10)
+    });
+    this.fetchPosts();
+  }
 
   like(postId) {
     const posts = this.state.posts;
@@ -66,26 +59,16 @@ export default class BlogPage extends Component {
   }
 
   render() {
-    const {posts, pageCount} = this.state;
+    const {posts, countPages} = this.state;
     return (
       <Container>
         <Row>
           <Col s={12} m={9}>
             <BlogList posts={posts} incrementLikes={this.incrementLikes}/>
-            <ReactPaginate previousLabel={"previous"}
-                           nextLabel={"next"}
-                           breakLabel={<a href="">...</a>}
-                           breakClassName={"break-me"}
-                           pageCount={pageCount}
-                           marginPagesDisplayed={2}
-                           pageRangeDisplayed={5}
-                           onPageChange={this.handlePageClick}
-                           containerClassName={"pagination"}
-                           subContainerClassName={"pages pagination"}
-                           activeClassName={"active"} />
+            <Pagination onPageChange={this.handlePageClick} pageCount={countPages} />
           </Col>
           <Col s={12} m={3}>
-            <PieChart columns={ map(posts, (post) => ([post.text, post.likes]))}/>
+            <PieChart columns={map(posts, (post) => ([post.text, post.likes]))}/>
           </Col>
         </Row>
       </Container>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {Footer} from 'react-materialize';
 import Header from '../shared/Header';
 
@@ -10,7 +9,7 @@ const MainLayout = ({children}) => (
     <main>
       { children }
     </main>
-    <Footer copyrights="&copy; 2015 Copyright Text"/>
+    <Footer copyrights="&copy; 2017 Copyright Text"/>
   </div>
 );
 
