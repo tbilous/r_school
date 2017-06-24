@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Immutable from 'immutable';
-import {map, bind, size, ceil} from 'lodash';
+import {map, bind, size, ceil, slice} from 'lodash';
 import {Col, Row, Container} from 'react-materialize';
 import request from 'superagent';
 import BlogList from '../ui/BlogList';
@@ -31,11 +31,9 @@ export default class BlogPage extends Component {
   }
 
   parseResponse(response) {
-    const {posts, meta} = response.body;
     this.setState({
-      posts: posts.slice(this.state.offset, (this.state.offset + meta.perPage)),
-      perPage: meta.perPage,
-      countPages: ceil(size(posts) / meta.perPage)
+      posts: response.body.posts,
+      perPage: response.body.meta.perPage
     });
   }
 
@@ -59,13 +57,15 @@ export default class BlogPage extends Component {
   }
 
   render() {
-    const {posts, countPages} = this.state;
+    const {posts, offset, perPage} = this.state;
+    const pageCount = ceil(size(posts) / perPage);
+    const paginatedPage = slice(posts, offset, (offset + perPage));
     return (
       <Container>
         <Row>
           <Col s={12} m={9}>
-            <BlogList posts={posts} incrementLikes={this.incrementLikes}/>
-            <Pagination onPageChange={this.handlePageClick} pageCount={countPages} />
+            <BlogList posts={paginatedPage} incrementLikes={this.incrementLikes}/>
+            <Pagination onPageChange={this.handlePageClick} pageCount={pageCount} />
           </Col>
           <Col s={12} m={3}>
             <PieChart columns={map(posts, (post) => ([post.text, post.likes]))}/>
