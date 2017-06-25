@@ -2,11 +2,12 @@ import React, {Component}  from 'react';
 import PropTypes from 'prop-types';
 
 import request from 'superagent';
-import {Preloader, Container, Row, Col} from 'react-materialize';
+import {Container, Row, Col} from 'react-materialize';
 
-import Image from './../ui/Image';
-import TextBox from './../ui/TextBox';
-// import Signature from './../ui/Signature';
+import Image from 'components/ui/Image';
+import TextBox from 'components/ui/TextBox';
+import PreloaderBlock from 'components/shared/Preloader';
+
 
 const settings = require('../../../initializers/settings');
 
@@ -32,7 +33,7 @@ export default class PostShow extends Component {
     const {post} = this.state;
 
     if (!post) {
-      return <div className="center"> <Preloader/> </div> ;
+      return <PreloaderBlock/>;
     }
 
     return (
@@ -56,7 +57,7 @@ PostShow.propTypes = {
     text: PropTypes.string,
     image: Image.propTypes.image
   }),
-  id: 1
+  id: PropTypes.number
 };
 
 PostShow.propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { formatDate } from '../../helpers/date';
+import { formatDate } from 'helpers/date';
 
 const Signature = ({signature}) => (
   <div className="m__card-footer">
