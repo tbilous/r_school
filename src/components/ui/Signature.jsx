@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { formatDate } from 'helpers/date';
 
 const Signature = ({signature}) => (
   <div className="m__card-footer">
     <span>{signature.author}/</span>
-    <span>{signature.createdAt}/</span>
-    <span>{signature.updatedAt}</span>
+    <span>{formatDate(signature.createdAt)}/</span>
+    <span>{formatDate(signature.updatedAt)}</span>
   </div>
 );
 

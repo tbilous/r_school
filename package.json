@@ -23,7 +23,11 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-materialize": "^1.0.1"
+    "react-materialize": "^1.0.1",
+    "react-paginate": "^4.4.3",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

@@ -11,6 +11,7 @@ const port = hostConfig.port;
 new webpackDevServer(webpack(config), {
   contentBase: './dist',
   hot: true,
+  historyApiFallback: true,
   publicPath: config.output.publicPath,
   stats: {
     colors: true
