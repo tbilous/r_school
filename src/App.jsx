@@ -1,24 +1,25 @@
 import React from 'react';
 require('./stylesheets/main.scss');
+import {
+  BrowserRouter,
+  Switch
+} from 'react-router-dom';
+import {map} from 'lodash';
+import routes from 'routes';
 
-import {BrowserRouter, Route} from 'react-router-dom';
-import BlogPage from 'components/containers/BlogPage';
 import MainLayout from 'components/layouts/MainLayout';
-import AboutPage from 'components/containers/AboutPage';
-import PostShow from 'components/containers/PostShow';
+import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 
 const App = () => (
   <BrowserRouter>
     <MainLayout>
-      <Route exact path="/" render={({match, location, history}) => (
-        <BlogPage match={match}
-                  location={location}
-                  history={history}/>
-      ) }/>
-      <Route exact path="/about" component={ AboutPage }/>
-      <Route exact path="/posts/:id" render={({match}) => (
-        <PostShow id={match.params.id} />
-      )} />
+      <Switch>
+        {
+          map(routes(), (route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))
+        }
+      </Switch>
     </MainLayout>
   </BrowserRouter>
 );

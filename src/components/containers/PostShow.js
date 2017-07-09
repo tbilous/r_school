@@ -23,7 +23,8 @@ export default class PostShow extends Component {
 
   fetchPosts() {
     request.get(
-      `${settings.dataServer}posts/${this.props.id}`,
+// eslint-disable-next-line react/prop-types
+      `${settings.dataServer}${this.props.match.url}`,
       {},
       (err, res) => this.setState({post: res.body})
     );

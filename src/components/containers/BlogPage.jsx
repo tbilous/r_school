@@ -7,7 +7,7 @@ import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
 import Pagination from 'components/widgets/Pagination';
 import FormSearch from 'components/widgets/SearchForm';
-import {postsPath} from 'helpers/routes/posts';
+import {searchPath} from 'helpers/search';
 
 export default class BlogPage extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class BlogPage extends Component {
 // eslint-disable-next-line prefer-const
     let queryObject = {searchTerm};
     request.get(
-      postsPath(queryObject),
+      searchPath(queryObject),
       {},
       (err, res) => this.parseResponse(res)
     );
