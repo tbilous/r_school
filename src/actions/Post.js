@@ -25,7 +25,7 @@ export function fetchPost(id) {
     dispatch(receivePost(queryObject));
 
     return request
-      .get(`${settings.dataServer}posts/${id}`)
+      .get(`${settings.dataServer}/posts/${id}`)
       .end((err, response) => {
         err ? dispatch(errorPost()) : dispatch(requestPost(response.body));
       });
