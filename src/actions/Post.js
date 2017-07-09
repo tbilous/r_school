@@ -1,63 +1,33 @@
 import request from 'superagent';
 
-import {postsPath} from 'helpers/routes/posts';
+const settings = require('../../initializers/settings');
 
-import * as types from '../constants/actionTypes/PostsActionTypes';
+import * as types from '../constants/actionTypes/PostActionTypes';
 
-const requestPosts = () => ({
-  type: types.FETCH_POSTS_REQUEST
+const requestPost = (id) => ({
+  type: types.FETCH_POST_REQUEST,
+  id
 });
 
-const recievePosts = (response) => ({
-  type: types.FETCH_POSTS_SUCCESS,
+const receivePost = (response) => ({
+  type: types.FETCH_POST_SUCCESS,
   response
 });
 
-const errorPosts = () => ({
-  type: types.FETCH_POSTS_ERROR
+const errorPost = () => ({
+  type: types.FETCH_POST_ERROR
 });
 
-export const like = (postId) => (
-  {
-    postId,
-    type: types.LIKE_POST
-  }
-);
-
-// export function fetchPosts(searchTerm) {
-//   const querryObject = {searchTerm, BASE_URL: SERVER_ENDPOINT};
-//
-//   return (dispatch) => {
-//     dispatch(requestPosts());
-//
-//     return axios
-//       .get(postsPath(querryObject))
-//       .then(response => {
-//         dispatch(recievePosts(response.data));
-//       })
-//       .catch(() => {
-//         dispatch(errorPosts());
-//       });
-//   };
-// }
-// function parseResponse(response) {
-//   this.setState({
-//     posts: response.body.posts,
-//     +erPage: response.body.meta.perPage
-//   });
-// }
-
-export function fetchPosts(searchTerm) {
-// eslint-disable-next-line prefer-const
-  let queryObject = {searchTerm};
+export function fetchPost(id) {
+  const queryObject = { id };
 
   return (dispatch) => {
-    dispatch(requestPosts());
+    dispatch(receivePost(queryObject));
 
     return request
-      .get(postsPath(queryObject))
+      .get(`${settings.dataServer}posts/${id}`)
       .end((err, response) => {
-        err ? dispatch(errorPosts()) : dispatch(recievePosts(response));
+        err ? dispatch(errorPost()) : dispatch(requestPost(response.body));
       });
   };
 }

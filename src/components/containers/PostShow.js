@@ -15,6 +15,7 @@ export default class PostShow extends Component {
   constructor(props) {
     super(props);
     this.state = {post: null};
+    // console.log(this.props);
   }
 
   componentDidMount() {
