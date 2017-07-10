@@ -11,14 +11,12 @@ import { identity, assign} from 'lodash';
 import { parse } from 'qs';
 import {Provider} from 'react-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
-import ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import createRoutes from 'routes';
 import MainLayout from 'components/layouts/MainLayout';
 import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 import store from 'store/index';
-import DevTools from 'components/containers/DevTools';
 
 import prepareData from 'helpers/prepareData';
 
@@ -44,7 +42,7 @@ class App extends React.Component {
 
 
       const withoutScroll = (location.state || {}).withoutScroll;
-      const nonPush = action != 'PUSH';
+      const nonPush = action !== 'PUSH';
 
       prepareData(store, state);
       store.subscribe(
@@ -76,5 +74,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<DevTools store={store}/>, document.getElementById('devTools'));
 export default App;
