@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from 'reducers';
+// import DevTools from 'components/containers/DevTools';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 
@@ -12,9 +13,9 @@ const store = createStore(
   compose(
     applyMiddleware(thunk),
     applyMiddleware(middleware)
-// eslint-disable-next-line no-underscore-dangle
+    // , DevTools.instrument()
+    // eslint-disable-next-line no-underscore-dangle
     , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-
   )
 );
 

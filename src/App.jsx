@@ -18,6 +18,9 @@ import MainLayout from 'components/layouts/MainLayout';
 import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 import store from 'store/index';
 
+// import ReactDOM from 'react-dom';
+// import DevTools from 'components/containers/DevTools';
+
 import prepareData from 'helpers/prepareData';
 
 const history = createBrowserHistory();
@@ -74,4 +77,5 @@ class App extends React.Component {
   }
 }
 
+// ReactDOM.render(<DevTools store={store}/>, document.getElementById('devTools'));
 export default App;
