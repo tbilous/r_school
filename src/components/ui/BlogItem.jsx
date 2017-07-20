@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 import Image from './Image';
 import TextBox from './TextBox';
 import Signature from './Signature';
-import Liking from './Liking';
+import LikeContainer from '../containers/LikeContainer';
 
 const BlogItem = ({post}) => (
   <Card>
@@ -23,9 +23,7 @@ const BlogItem = ({post}) => (
     </Row>
     <Row className='card-action'>
       <Col s={12} m={3}>
-        <Liking
-          likes={post.likes}
-          // incrementLikes={incrementLikes}
+        <LikeContainer
           id={post.id}/>
       </Col>
       <Col s={12} m={9}>

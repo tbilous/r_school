@@ -1,26 +1,21 @@
 import { connect } from 'react-redux';
-import { likePost } from 'actions/Posts';
+import { likePost } from '../../actions/Posts';
 
-import Liking from 'components/ui/Liking';
+import Liking from '../ui/Liking';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   likePost: (posts) => dispatch(likePost(posts, ownProps.id))
 });
 
 const mapStateToProps = (state) => ({
-  posts: Posts(state).posts
-});
-
-const Posts  = (arr) => ({
-  posts: arr.posts.posts ? arr.posts.posts : arr.posts
+  posts: state.posts.posts
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
-  console.log(ownProps),
   Object.assign({}, ownProps, {
-    likes: Posts(stateProps).posts
+    likes: stateProps.posts
       .find(post => post.id === ownProps.id).likes,
-    likePost: () => dispatchProps.likePost(Posts(stateProps).posts, ownProps.id)
+    likePost: () => dispatchProps.likePost(stateProps.posts, ownProps.id)
   })
 );
 

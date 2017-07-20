@@ -16,23 +16,25 @@ export default function(state = initialState, action) {
     case types.FETCH_POSTS_ERROR:
       return assign({}, initialState, { error: true });
     case types.FETCH_POSTS_SUCCESS:
-      return assign({}, initialState, { posts: action.response.posts, meta: action.response.meta });
+      return assign({}, initialState, { posts: action.response.posts });
     case types.LIKE_POST:
       return assign({}, initialState, {
-        posts: like(action.postId), meta: action.response.meta
+        posts: incrementLike(action.posts, action.id)
       });
     default: return state;
   }
 }
 
-const like = (postId) => {
-  const posts = this.state.posts;
+const incrementLike = (posts, postId) => {
   const arr = posts.findIndex((i) => i.id === postId);
   const origPost = Immutable.fromJS(posts);
+  let updatedPosts;
 
-  this.setState({
+// eslint-disable-next-line prefer-const
+  updatedPosts = {
     posts: origPost
       .setIn([arr, 'likes'], posts[arr].likes + 1)
       .toJS()
-  });
+  };
+  return updatedPosts.posts;
 };

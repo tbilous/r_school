@@ -10,7 +10,6 @@ const BlogList = (props) => (
       map(props, (post) => <BlogItem
         key={post.id}
         post={post}
-        // incrementLikes={props.incrementLikes}
       />)
     }
   </div>

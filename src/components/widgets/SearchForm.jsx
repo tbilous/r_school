@@ -41,5 +41,6 @@ export default class FormSearch extends Component {
 }
 
 FormSearch.propTypes = {
-  searchPosts: PropTypes.func
+  searchPosts: PropTypes.func,
+  fetchPosts: PropTypes.func
 };
