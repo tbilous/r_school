@@ -1,37 +1,20 @@
 import React, {Component}  from 'react';
 import PropTypes from 'prop-types';
 
-import request from 'superagent';
 import {Container, Row, Col} from 'react-materialize';
 
-import Image from 'components/ui/Image';
-import TextBox from 'components/ui/TextBox';
-import PreloaderBlock from 'components/shared/Preloader';
+import Image from './Image';
+import TextBox from './TextBox';
+import PreloaderBlock from '../shared/Preloader';
 
-
-const settings = require('../../../initializers/settings');
 
 export default class PostShow extends Component {
   constructor(props) {
     super(props);
-    this.state = {post: null};
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
-    request.get(
-// eslint-disable-next-line react/prop-types
-      `${settings.dataServer}${this.props.match.url}`,
-      {},
-      (err, res) => this.setState({post: res.body})
-    );
   }
 
   render() {
-    const {post} = this.state;
+    const {post} = this.props;
 
     if (!post) {
       return <PreloaderBlock/>;

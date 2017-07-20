@@ -1,4 +1,4 @@
-import BlogPage from 'components/containers/BlogPage';
+import BlogPage from '../components/containers/BlogContainer';
 import { rootPath } from '../helpers/routes';
 import { fetchPosts } from '../actions/Posts';
 

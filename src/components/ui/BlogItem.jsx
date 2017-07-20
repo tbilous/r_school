@@ -9,7 +9,7 @@ import TextBox from './TextBox';
 import Signature from './Signature';
 import Liking from './Liking';
 
-const BlogItem = ({post, incrementLikes}) => (
+const BlogItem = ({post}) => (
   <Card>
     <Row>
       <Col m={3} s={5}>
@@ -25,7 +25,7 @@ const BlogItem = ({post, incrementLikes}) => (
       <Col s={12} m={3}>
         <Liking
           likes={post.likes}
-          incrementLikes={incrementLikes}
+          // incrementLikes={incrementLikes}
           id={post.id}/>
       </Col>
       <Col s={12} m={9}>
@@ -43,7 +43,7 @@ BlogItem.propTypes = {
     likes: PropTypes.number,
     image: Image.propTypes.image
   }),
-  incrementLikes: Liking.propTypes.incrementLikes
+  // incrementLikes: Liking.propTypes.incrementLikes
 };
 
 export default BlogItem;

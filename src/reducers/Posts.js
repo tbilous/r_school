@@ -16,10 +16,10 @@ export default function(state = initialState, action) {
     case types.FETCH_POSTS_ERROR:
       return assign({}, initialState, { error: true });
     case types.FETCH_POSTS_SUCCESS:
-      return assign({}, initialState, { posts: action.response });
+      return assign({}, initialState, { posts: action.response.posts, meta: action.response.meta });
     case types.LIKE_POST:
       return assign({}, initialState, {
-        posts: like(action.postId)
+        posts: like(action.postId), meta: action.response.meta
       });
     default: return state;
   }

@@ -17,13 +17,13 @@ const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
 
-export const like = (postId) => (
+export const likePost = (posts, postId) => (
   {
+    posts,
     postId,
     type: types.LIKE_POST
   }
 );
-
 
 export function fetchPosts(searchTerm) {
 // eslint-disable-next-line prefer-const
@@ -34,7 +34,7 @@ export function fetchPosts(searchTerm) {
     return request
       .get(searchPath(queryObject))
       .end((err, response) => {
-        err ? dispatch(errorPosts()) : dispatch(recievePosts(response));
+        err ? dispatch(errorPosts()) : dispatch(recievePosts(response.body));
       });
   };
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import PostShow from 'components/ui/PostShow';
+import PostShow from '../ui/PostShow';
 
 const mapStateToProps = (state) => ({
   post: state.post.post,

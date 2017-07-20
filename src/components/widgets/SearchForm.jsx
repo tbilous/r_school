@@ -17,7 +17,7 @@ export default class FormSearch extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.searchPosts(this.state.searchTerm, e);
+    this.props.fetchPosts(this.state.searchTerm, e);
     this.setState({searchTerm: ''});
   }
 

@@ -1,4 +1,4 @@
-import PostShow from 'components/containers/PostShow';
+import PostShow from '../components/containers/PostContainer';
 import { postPath } from '../helpers/routes';
 import { fetchPost } from '../actions/Post';
 

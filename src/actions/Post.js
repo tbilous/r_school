@@ -5,8 +5,8 @@ const settings = require('../../initializers/settings');
 import * as types from '../constants/actionTypes/PostActionTypes';
 
 const requestPost = (id) => ({
-  type: types.FETCH_POST_REQUEST,
-  id
+  id,
+  type: types.FETCH_POST_REQUEST
 });
 
 const receivePost = (response) => ({
@@ -22,12 +22,12 @@ export function fetchPost(id) {
   const queryObject = { id };
 
   return (dispatch) => {
-    dispatch(receivePost(queryObject));
+    dispatch(requestPost(queryObject));
 
     return request
       .get(`${settings.dataServer}/posts/${id}`)
       .end((err, response) => {
-        err ? dispatch(errorPost()) : dispatch(requestPost(response.body));
+        err ? dispatch(errorPost()) : dispatch(receivePost(response.body));
       });
   };
 }
