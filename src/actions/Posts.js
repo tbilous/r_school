@@ -17,9 +17,8 @@ const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
 
-export const likePost = (posts, id) => (
+export const likePost = (id) => (
   {
-    posts,
     id,
     type: types.LIKE_POST
   }

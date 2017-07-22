@@ -4,7 +4,7 @@ import { likePost } from '../../actions/Posts';
 import Liking from '../ui/Liking';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  likePost: (posts) => dispatch(likePost(posts, ownProps.id))
+  likePost: () => dispatch(likePost(ownProps.id))
 });
 
 const mapStateToProps = (state) => ({
@@ -15,7 +15,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
   Object.assign({}, ownProps, {
     likes: stateProps.posts
       .find(post => post.id === ownProps.id).likes,
-    likePost: () => dispatchProps.likePost(stateProps.posts, ownProps.id)
+    likePost: () => dispatchProps.likePost(ownProps.id)
   })
 );
 

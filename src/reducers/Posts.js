@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
       return assign({}, initialState, { posts: action.response.posts });
     case types.LIKE_POST:
       return assign({}, initialState, {
-        posts: incrementLike(action.posts, action.id)
+        posts: incrementLike(state.posts, action.id)
       });
     default: return state;
   }
