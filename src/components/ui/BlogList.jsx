@@ -7,10 +7,10 @@ import BlogItem from './BlogItem';
 const BlogList = (props) => (
   <div>
     {
-      map(props.posts, (post) => <BlogItem
+      map(props, (post) => <BlogItem
         key={post.id}
         post={post}
-        incrementLikes={props.incrementLikes}/>)
+      />)
     }
   </div>
 );

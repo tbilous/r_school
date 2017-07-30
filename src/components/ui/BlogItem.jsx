@@ -7,9 +7,9 @@ import {Link} from 'react-router-dom';
 import Image from './Image';
 import TextBox from './TextBox';
 import Signature from './Signature';
-import Liking from './Liking';
+import LikeContainer from '../containers/LikeContainer';
 
-const BlogItem = ({post, incrementLikes}) => (
+const BlogItem = ({post}) => (
   <Card>
     <Row>
       <Col m={3} s={5}>
@@ -23,9 +23,7 @@ const BlogItem = ({post, incrementLikes}) => (
     </Row>
     <Row className='card-action'>
       <Col s={12} m={3}>
-        <Liking
-          likes={post.likes}
-          incrementLikes={incrementLikes}
+        <LikeContainer
           id={post.id}/>
       </Col>
       <Col s={12} m={9}>
@@ -43,7 +41,7 @@ BlogItem.propTypes = {
     likes: PropTypes.number,
     image: Image.propTypes.image
   }),
-  incrementLikes: Liking.propTypes.incrementLikes
+  // incrementLikes: Liking.propTypes.incrementLikes
 };
 
 export default BlogItem;

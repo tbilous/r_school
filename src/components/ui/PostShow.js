@@ -1,36 +1,21 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, {Component}  from 'react';
 import PropTypes from 'prop-types';
 
-import request from 'superagent';
 import {Container, Row, Col} from 'react-materialize';
 
-import Image from 'components/ui/Image';
-import TextBox from 'components/ui/TextBox';
-import PreloaderBlock from 'components/shared/Preloader';
+import Image from './Image';
+import TextBox from './TextBox';
+import PreloaderBlock from '../shared/Preloader';
 
-
-const settings = require('../../../initializers/settings');
 
 export default class PostShow extends Component {
   constructor(props) {
     super(props);
-    this.state = {post: null};
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
-    request.get(
-      `${settings.dataServer}posts/${this.props.id}`,
-      {},
-      (err, res) => this.setState({post: res.body})
-    );
   }
 
   render() {
-    const {post} = this.state;
+    const {post} = this.props;
 
     if (!post) {
       return <PreloaderBlock/>;

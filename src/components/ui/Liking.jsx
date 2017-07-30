@@ -1,13 +1,29 @@
-import React from 'react';
+/* eslint-disable react/prefer-stateless-function */
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Button, Chip} from 'react-materialize';
 
-const Liking = ({likes, incrementLikes, id}) => (
-  <div>
-    <Chip className='teal'>{likes}</Chip>
-    <Button waves="light" icon="star" floating onClick={() => incrementLikes(id)}/>
-  </div>
-);
+
+export default class Liking extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <Chip className='teal'>{this.props.likes}</Chip>
+        <Button waves="light" icon="star"
+                floating onClick={() => this.props.likePost()}
+        />
+      </div>
+    );
+  }
+}
+
+Liking.defaultProps = {
+  likes: 0
+};
 
 Liking.defaultProps = {
   likes: 99
@@ -15,8 +31,6 @@ Liking.defaultProps = {
 
 Liking.propTypes = {
   likes: PropTypes.number.isRequired,
-  incrementLikes: PropTypes.func,
+  likePost: PropTypes.func,
   id: PropTypes.number.isRequired
 };
-
-export default Liking;
