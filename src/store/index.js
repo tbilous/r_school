@@ -1,22 +1,16 @@
+/* eslint-disable no-underscore-dangle */
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 import reducers from 'reducers';
 // import DevTools from 'components/containers/DevTools';
-import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware } from 'react-router-redux';
+import APIMiddleware from '../middleware/API';
 
-const history = createHistory();
-const middleware = routerMiddleware(history);
 
 const store = createStore(
   reducers,
   compose(
-    applyMiddleware(thunk),
-    applyMiddleware(middleware)
-    // , DevTools.instrument()
-    // eslint-disable-next-line no-underscore-dangle
+    applyMiddleware(APIMiddleware)
     , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // , DevTools.instrument()
   )
 );
-
 export default store;

@@ -8,5 +8,4 @@ function mapDispatchToProps(dispatch) {
     fetchPosts: (searchTerm) => dispatch(fetchPosts(searchTerm))
   };
 }
-
 export default connect(null, mapDispatchToProps)(SearchForm);

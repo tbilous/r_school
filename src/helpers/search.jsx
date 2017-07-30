@@ -1,5 +1,3 @@
-const settings = require('../../initializers/settings');
-
 const searchPath = ({ searchTerm }) => {
   let searchParam = '';
 
@@ -7,7 +5,7 @@ const searchPath = ({ searchTerm }) => {
     searchParam = `?search=${searchTerm}`;
   }
 
-  return `${settings.dataServer}/posts${searchTerm ? searchParam : ''}`;
+  return `/posts${searchTerm ? searchParam : ''}`;
 };
 
 export { searchPath };
