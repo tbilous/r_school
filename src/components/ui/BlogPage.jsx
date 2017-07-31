@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import BlogList from '../ui/BlogList';
 import PieChart from '../ui/PieChart';
 
-import SearchContainer from '../containers/SearchConatiner';
+import SearchContainer from '../containers/SearchContainer';
 
 const BlogPage = (props) => (
   <Container>
