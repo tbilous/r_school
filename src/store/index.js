@@ -1,16 +1,16 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from 'reducers';
-// import DevTools from 'components/containers/DevTools';
-import APIMiddleware from '../middleware/API';
+import reducers from 'blog_reducers/index';
+import DevTools from 'components/containers/DevTools';
+import APIMiddleware from 'middleware/API';
 
 
-const store = createStore(
+const store = (initialState) => createStore(
   reducers,
+  initialState,
   compose(
     applyMiddleware(APIMiddleware)
-    , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    // , DevTools.instrument()
+    , DevTools.instrument()
   )
 );
 export default store;

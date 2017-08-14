@@ -6,7 +6,7 @@ const PostShowRoute = {
   path: postPath(),
   component: PostShow,
   prepareData: (store, query, params) => {
-    store.dispatch(fetchPost(params.id));
+    return store.dispatch(fetchPost(params.id));
   }
 };
 export default PostShowRoute;

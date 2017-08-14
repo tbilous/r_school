@@ -1,5 +1,7 @@
 /* eslint-disable import/max-dependencies */
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 require('stylesheets/main.scss');
 
 import {
@@ -16,10 +18,11 @@ import { ConnectedRouter } from 'react-router-redux';
 import createRoutes from 'routes';
 import MainLayout from 'components/layouts/MainLayout';
 import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
-import store from 'store/index';
+// import store from 'store/index';
+import createStore from 'store';
+const store = createStore(window.__INITIAL_STATE__);
 
-// import ReactDOM from 'react-dom';
-// import DevTools from 'components/containers/DevTools';
+import DevTools from 'components/containers/DevTools';
 
 import prepareData from 'helpers/prepareData';
 
@@ -77,5 +80,11 @@ class App extends React.Component {
   }
 }
 
-// ReactDOM.render(<DevTools store={store}/>, document.getElementById('devTools'));
+ReactDOM.render(
+  <DevTools store={store}/>,
+  document.getElementById('devTools'),
+  () => {
+    delete window.__INITIAL_STATE__;
+  }
+);
 export default App;

@@ -7,7 +7,7 @@ const BlogPageRoute = {
   path: rootPath(),
   component: BlogPage,
   prepareData: (store) => {
-    store.dispatch(fetchPosts());
+    return store.dispatch(fetchPosts());
   }
 };
 
