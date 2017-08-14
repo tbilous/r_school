@@ -1,4 +1,4 @@
-/* eslint-disable import/max-dependencies */
+/* eslint-disable import/max-dependencies,no-underscore-dangle */
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -18,7 +18,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import createRoutes from 'routes';
 import MainLayout from 'components/layouts/MainLayout';
 import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
-// import store from 'store/index';
+
 import createStore from 'store';
 const store = createStore(window.__INITIAL_STATE__);
 
