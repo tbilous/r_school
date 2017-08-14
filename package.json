@@ -18,6 +18,8 @@
   "homepage": "https://github.com/tbilous/r_school#readme",
   "dependencies": {
     "app-module-path": "^2.2.0",
+    "c3": "^0.4.15",
+    "d3": "^4.10.0",
     "ejs": "^2.5.7",
     "history": "^4.6.3",
     "immutable": "^3.8.1",

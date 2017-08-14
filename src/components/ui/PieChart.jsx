@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 export default class PieChart extends Component {
   componentDidMount() {
 // eslint-disable-next-line no-undef
+    const c3 = require('c3');
     this.chart = c3.generate({
       bindto: this.refs.chart,
       data: {
