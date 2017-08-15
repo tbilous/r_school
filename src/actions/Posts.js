@@ -1,6 +1,6 @@
-import { API_CALL } from '../middleware/API';
-import {searchPath} from '../helpers/search';
-import * as types from '../constants/actionTypes/PostsActionTypes';
+import { API_CALL } from 'middleware/API';
+import {searchPath} from 'helpers/search';
+import * as types from 'constants/actionTypes/PostsActionTypes';
 export const likePost = (id) => (
   {
     id,

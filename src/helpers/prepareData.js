@@ -6,7 +6,8 @@ import { map } from 'lodash/collection';
 export default function (store, state) {
   const { location, params, routes } = state;
 
-  const query = parse(location.search.substr(1));
+  const query = location.search ? parse(location.search.substr(1)) : {};
+
 
   const prepareDataFns = compact(map(routes, route => route.prepareData));
 

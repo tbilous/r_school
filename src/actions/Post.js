@@ -1,5 +1,5 @@
-import { API_CALL } from '../middleware/API';
-import * as types from '../constants/actionTypes/PostActionTypes';
+import { API_CALL } from 'middleware/API';
+import * as types from 'constants/actionTypes/PostActionTypes';
 
 export function fetchPost(id) {
   return {

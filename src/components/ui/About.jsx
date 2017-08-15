@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 const About = () => (
   <div>
@@ -21,6 +22,9 @@ const About = () => (
       augue rhoncus, bibendum mauris sit amet, hendrerit ex. Sed auctor tincidunt massa, sit amet sagittis arcu
       egestas accumsan. Donec semper mollis mauris, ut malesuada tortor.
     </p>
+    <Helmet title='About'>
+      <meta name="description" content="Helmet application" />
+    </Helmet>
   </div>
 );
 

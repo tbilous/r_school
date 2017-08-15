@@ -1,12 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
-const hostConfig = require(path.join(__dirname, 'initializers') + '/settings');
+// const path = require('path');
+// const webpack = require('webpack');
+// const hostConfig = require(path.join(__dirname, 'initializers') + '/settings');
 
-module.exports = {
+import path from 'path';
+import webpack from 'webpack';
+
+export default {
   entry: [
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://${hostConfig.host}:${hostConfig.port}/`,
-    'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client',
     './src/index.js'
   ],
   output: {
