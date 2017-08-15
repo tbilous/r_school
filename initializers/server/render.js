@@ -10,10 +10,8 @@ import { compact } from 'lodash/array';
 import { assign } from 'lodash/object';
 import prepareData from 'helpers/prepareData';
 
-import createStore from 'store';
 
-const store = createStore();
-// import store from 'store'
+import createStore from 'store';
 import createRoutes from 'routes';
 const routes = createRoutes();
 
@@ -40,7 +38,10 @@ function historyCb(location) {
   return routeState;
 }
 
+
 export default (req, res) => {
+  const store = createStore();
+
   const location = url.parse(req.url);
   const routeState = historyCb(location);
   if (routeState.routes.length == 0) {
